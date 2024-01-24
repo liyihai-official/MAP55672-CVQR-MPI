@@ -20,10 +20,10 @@ $$Ai(:, 1 : k)$$
 denote the 
 $N × k$ matrix $(N = 10^5)$ 
 with the k columns of Ai. 
-Use your CAQR code to factor and solve $$Ai(:, 1 : k)x_k ≈ b_i$$
+Use your CAQR code to factor and solve $$A_i(:, 1 : k)x_k ≈ b_i$$
 for 
 $$k = 200, 400, . . . , 10^3$$
-Similarly, use CAQR to factor and solve $$Ai(1 : j, :)x(j) ≈ bi(1 : j)$$ 
+Similarly, use CAQR to factor and solve $$A_i(1 : j, :)x(j) ≈ b_i(1 : j)$$ 
 for $$j = 2 ×\frac{N}{10}, 4 × \frac{N}{10} , . . . , N$$
 
 Does your code fail at some point? Report if your code can solve the full problem or
