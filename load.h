@@ -12,5 +12,7 @@
 #define LOAD_MATRIX_ROWS 3 // Define the max matrix columns of Matrix in data file.
 #define LOAD_MATRIX_COLS 2 // Define the max matrix columns of Matrix in data file.
 
+int return_message(const int err);
 
 void load(const char* filename, double vectorNumbers[VECTOR_SIZE], double matrixNumbers[LOAD_MATRIX_ROWS][LOAD_MATRIX_COLS]);
+int decomp1d(int n, int p, int myid, int *s, int *e);
