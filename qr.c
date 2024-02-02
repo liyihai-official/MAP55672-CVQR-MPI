@@ -1,7 +1,5 @@
-#include <iostream>
+#include <stdio.h>
 #include <lapacke.h>
-
-using namespace std;
 
 int main() {
     // Define the matrix A
@@ -16,46 +14,39 @@ int main() {
     int n = 2; // number of columns
 
     // Define variables for LAPACK functions
+    int info;
     double tau[2];
 
-
-
     // Perform QR factorization
-    int info;
     info = LAPACKE_dgeqrf(LAPACK_ROW_MAJOR, m, n, *A, n, tau);
+
+    // Check for errors
     if (info != 0) {
-        cout << "QR factorization failed with error code " << info << endl;
+        printf("QR factorization failed with error code %d\n", info);
         return 1;
     }
 
-
-
-
-
-
-    // Print Output
-    cout << endl << "Output " << endl;
+    // Print the Q matrix (Note: LAPACK stores Q implicitly in the input matrix A)
+    printf("Q matrix:\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            cout << A[i][j] << "\t";
+            printf("%lf ", A[i][j]);
         }
-        cout << endl;
+        printf("\n");
     }
-
-    cout << endl << tau[0] << " " << tau[1] << endl; 
-
-    cout << endl << "R Matrix " << endl;
+    printf("\n\t%lf %lf\n", tau[0], tau[1]);
+    // Print the R matrix (Upper triangular factor)
+    printf("\nR matrix:\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             if (i <= j) {
-                // printf("%lf ", A[i][j]);
-                cout << A[i][j] << "\t";
+                printf("%lf ", A[i][j]);
             } else {
-                // printf("0.0 ");
-                cout << 0.0 << "\t";
+                printf("0.0 ");
             }
         }
-        cout << endl;
+        printf("\n");
     }
+
     return 0;
 }
