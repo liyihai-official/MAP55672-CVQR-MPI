@@ -9,7 +9,7 @@
 #endif  // LOAD_C
 
 // Function to load numbers from a file into a vector and matrix
-void load(const char* filename, double vectorNumbers[VECTOR_SIZE], double matrixNumbers[MATRIX_ROWS][MATRIX_COLS]) {
+void load(const char* filename, double vectorNumbers[VECTOR_SIZE], double matrixNumbers[LOAD_MATRIX_ROWS][LOAD_MATRIX_COLS]) {
     // Open the file
     FILE* inputFile = fopen(filename, "r");
 
@@ -31,7 +31,13 @@ void load(const char* filename, double vectorNumbers[VECTOR_SIZE], double matrix
                 // Store the remaining numbers in the matrix
                 size_t row = (i - VECTOR_SIZE) / MATRIX_COLS;
                 size_t col = (i - VECTOR_SIZE) % MATRIX_COLS;
-                matrixNumbers[row][col] = num;
+
+                printf("(ROW, COL) -->> num: (%ld, %ld) -->> %.2lf \n\n", row, col, num);
+                if (col >= LOAD_MATRIX_COLS || row >= LOAD_MATRIX_ROWS){
+                    continue;
+                } else {
+                    matrixNumbers[row][col] = num;
+                }
             }
             ++count;
         }
@@ -41,7 +47,8 @@ void load(const char* filename, double vectorNumbers[VECTOR_SIZE], double matrix
     fclose(inputFile);
 
     // Check if the number of read elements matches the expected size
-    if (count != VECTOR_SIZE + MATRIX_ROWS * MATRIX_COLS) {
+    if (count != VECTOR_SIZE + LOAD_MATRIX_ROWS * LOAD_MATRIX_COLS) {
+        printf("count: -->> %ld\n", count);
         fprintf(stderr, "Error: Incorrect number of elements in the file.\n");
         exit(1); // Exit with an error code
     }

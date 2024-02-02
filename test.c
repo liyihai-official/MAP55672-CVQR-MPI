@@ -11,9 +11,6 @@
 #endif  // TEST_C
 
 
-
-
-
 int main(int argc, char *argv[]) {
     // Check if the correct number of command-line arguments is provided
     if (argc != 3 || strcmp(argv[1], "-f") != 0) {
@@ -23,7 +20,7 @@ int main(int argc, char *argv[]) {
 
     // Declare arrays to store vector and matrix
     double vector[VECTOR_SIZE];
-    double matrix[MATRIX_ROWS][MATRIX_COLS];
+    double matrix[LOAD_MATRIX_ROWS][LOAD_MATRIX_COLS];
 
     // Call the load function with the specified filename
     load(argv[2], vector, matrix);
@@ -44,8 +41,8 @@ int main(int argc, char *argv[]) {
 
     // Print the matrix
     printf("Matrix:\n");
-    for (size_t i = 0; i < MATRIX_ROWS; ++i) {
-        for (size_t j = 0; j < MATRIX_COLS; ++j) {
+    for (size_t i = 0; i < LOAD_MATRIX_ROWS; ++i) {
+        for (size_t j = 0; j < LOAD_MATRIX_COLS; ++j) {
             printf("%lf ", matrix[i][j]);
         }
         printf("\n");
@@ -60,7 +57,7 @@ int main(int argc, char *argv[]) {
 
     int info;
     double tau[MATRIX_COLS];
-    info = LAPACKE_dgeqrf(LAPACK_ROW_MAJOR, MATRIX_ROWS, MATRIX_COLS, *matrix, MATRIX_COLS, tau);
+    info = LAPACKE_dgeqrf(LAPACK_ROW_MAJOR, LOAD_MATRIX_ROWS, LOAD_MATRIX_COLS, *matrix, LOAD_MATRIX_COLS, tau);
 
 
     // Check for errors
@@ -71,21 +68,21 @@ int main(int argc, char *argv[]) {
 
     // Print the Q matrix (Note: LAPACK stores Q implicitly in the input matrix A)
     printf("Q matrix:\n");
-    for (int i = 0; i < MATRIX_ROWS; i++) {
-        for (int j = 0; j < MATRIX_COLS; j++) {
-            printf("%lf ", matrix[i][j]);
+    for (int i = 0; i < LOAD_MATRIX_ROWS; i++) {
+        for (int j = 0; j < LOAD_MATRIX_COLS; j++) {
+            printf("%.3lf ", matrix[i][j]);
         }
         printf("\n");
     }
     printf("\nTAU: \n%lf %lf\n", tau[0], tau[1]);
     // Print the R matrix (Upper triangular factor)
     printf("\nR matrix:\n");
-    for (int i = 0; i < MATRIX_ROWS; i++) {
-        for (int j = 0; j < MATRIX_COLS; j++) {
+    for (int i = 0; i < LOAD_MATRIX_ROWS; i++) {
+        for (int j = 0; j < LOAD_MATRIX_COLS; j++) {
             if (i <= j) {
-                printf("%lf ", matrix[i][j]);
+                printf("%.3lf ", matrix[i][j]);
             } else {
-                printf("0.0 ");
+                printf(" 0.000 ");
             }
         }
         printf("\n");
