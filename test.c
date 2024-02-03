@@ -101,6 +101,18 @@ int main(int argc, char *argv[]) {
         /*-----------------------------------------------------------*/
         printf("\n/*-----------------------------------------------------------*/\n\n");
     }
+
+    
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    /* Suppose we have vector with N elements */
+    int N = 1e5;
+
+    /* Determine the decomposition of vector */
+    int s, e;
+    decomp1d(N, np, rank, &s, &e);
+    printf("Rank %d got %d members with index: [%d, %d]\n", rank, e-s, s, e);
+
     
 
 
