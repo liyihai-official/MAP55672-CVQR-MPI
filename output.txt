@@ -1,8 +1,0 @@
---------------------------------------------------------------------------
-An unrecognized option was included on the mpirun command line:
-
-  Option: --gdb
-
-Please use the "mpirun --help" command to obtain a list of all
-supported options.
---------------------------------------------------------------------------

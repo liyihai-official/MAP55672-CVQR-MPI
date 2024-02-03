@@ -1,4 +1,4 @@
-CC = gcc-13
+CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
@@ -11,7 +11,7 @@ load.o: load.c load.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 test: test.c load.o
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CC) -g $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 clean:
 	rm -f *.o test
