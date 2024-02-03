@@ -4,12 +4,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define VECTOR_SIZE 3  // Replace with the desired size for the vector (N)
+#define VECTOR_SIZE 5  // Replace with the desired size for the vector (N)
 
-#define MATRIX_ROWS 3   // Replace with the desired number of rows for the matrix (N)
+#define MATRIX_ROWS 5   // Replace with the desired number of rows for the matrix (N)
 #define MATRIX_COLS 3   // Replace with the desired number of columns for the matrix (M)
 
-#define LOAD_MATRIX_ROWS 3 // Define the max matrix columns of Matrix in data file.
+#define LOAD_MATRIX_ROWS 5 // Define the max matrix columns of Matrix in data file.
 #define LOAD_MATRIX_COLS 2 // Define the max matrix columns of Matrix in data file.
 
 int return_message(const int err);
