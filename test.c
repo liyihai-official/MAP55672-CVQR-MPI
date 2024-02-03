@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "load.h"
-#include <lapacke.h>
 #include <mpi.h>
+#include <lapacke.h>
 
 #endif  // TEST_C
 
